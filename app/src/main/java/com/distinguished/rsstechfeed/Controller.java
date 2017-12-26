@@ -31,8 +31,8 @@ public class Controller implements Callback<RSSFeed> {
             List<Article> articleList = rss.getArticleList();
 
             for (Article article : articleList) {
-                //System.out.println(article.getTitle());
-                //System.out.println(article.getLink());
+                System.out.println(article.getTitle());
+                System.out.println(article.getLink());
             }
 
         }
