@@ -1,10 +1,12 @@
 package com.distinguished.rsstechfeed;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.List;
@@ -35,8 +37,16 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ArticleAdapter.ViewHolder holder, int position) {
-        Article article = ((Article) articleList.get(position));
+        final Article article = ((Article) articleList.get(position));
         holder.articleTextView.setText(article.getTitle());
+        holder.articleTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = v.getContext();
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(article.getLink()));
+                context.startActivity(browserIntent);
+            }
+        });
     }
 
     @Override
