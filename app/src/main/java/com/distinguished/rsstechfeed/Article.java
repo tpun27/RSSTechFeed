@@ -10,7 +10,13 @@ public class Article {
     private String title;
 
     @Element(name = "link")
-    private String link;
+    private String articleLink;
+
+    @Element(name = "description")
+    private String imageLink;
+
+    @Element(name = "pubDate")
+    private String pubDate;
 
     public String getTitle() {
         return title;
@@ -20,11 +26,27 @@ public class Article {
         this.title = title;
     }
 
-    public String getLink() {
-        return link;
+    public String getArticleLink() {
+        return articleLink;
     }
 
-    public void setLink(String link) {
-        this.link = link;
+    public void setArticleLink(String articleLink) {
+        this.articleLink = articleLink;
+    }
+
+    public String getImageLink() {
+        return imageLink;
+    }
+
+    public void setImageLink(String imageLink) {
+        this.imageLink = imageLink;
+    }
+
+    public String getPubDate() {
+        return pubDate;
+    }
+
+    public void setPubDate(String pubDate) {
+        this.pubDate = pubDate;
     }
 }

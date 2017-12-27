@@ -4,6 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -37,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     RSSFeed rss = response.body();
 
+                    List<Article> articleList = rss.getArticleList();
+                    cleanImageLinks(articleList);
+
                     articleRecyclerView = (RecyclerView) findViewById(R.id.articleRecyclerView);
                     articleRecyclerView.setHasFixedSize(true);
                     articleRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
@@ -54,5 +60,14 @@ public class MainActivity extends AppCompatActivity {
                 t.printStackTrace();
             }
         });
+    }
+
+    public void cleanImageLinks(List<Article> articleList) {
+        for (Article article : articleList) {
+            String imageLink = article.getImageLink();
+            imageLink = imageLink.substring(imageLink.indexOf("http"));
+            imageLink = imageLink.substring(0, imageLink.indexOf('"'));
+            article.setImageLink(imageLink);
+        }
     }
 }

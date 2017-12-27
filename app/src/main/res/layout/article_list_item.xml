@@ -4,6 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/articleImageView" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -12,7 +17,16 @@
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
         android:textStyle="bold"
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/articleTextView" />
+        android:id="@+id/articleTitleTextView" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        android:textStyle="bold"
+        android:id="@+id/articleDateTextView" />
 
 </LinearLayout>
