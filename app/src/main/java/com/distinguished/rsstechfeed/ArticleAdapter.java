@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -47,6 +46,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
         Picasso.with(holder.articleImageView.getContext()).load(article.getImageLink()).resize(150, 150).into(holder.articleImageView);
         holder.articleDateTextView.setText(article.getPubDate());
         holder.articleTitleTextView.setText(article.getTitle());
+
         holder.articleTitleTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,6 +55,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
                 context.startActivity(browserIntent);
             }
         });
+
         holder.articleDateTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,6 +64,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
                 context.startActivity(browserIntent);
             }
         });
+
         holder.articleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
