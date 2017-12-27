@@ -44,10 +44,26 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
     @Override
     public void onBindViewHolder(ArticleAdapter.ViewHolder holder, int position) {
         final Article article = ((Article) articleList.get(position));
-        Picasso.with(holder.articleImageView.getContext()).load(article.getImageLink()).into(holder.articleImageView);
+        Picasso.with(holder.articleImageView.getContext()).load(article.getImageLink()).resize(150, 150).into(holder.articleImageView);
         holder.articleDateTextView.setText(article.getPubDate());
         holder.articleTitleTextView.setText(article.getTitle());
         holder.articleTitleTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = v.getContext();
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(article.getArticleLink()));
+                context.startActivity(browserIntent);
+            }
+        });
+        holder.articleDateTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = v.getContext();
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(article.getArticleLink()));
+                context.startActivity(browserIntent);
+            }
+        });
+        holder.articleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Context context = v.getContext();
